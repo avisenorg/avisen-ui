@@ -38,6 +38,7 @@ const BlockDetails = () => {
     <>
       <div>
         <h1>{hash}</h1>
+        <h2>Articles</h2>
         <ul>
         {
           block &&
