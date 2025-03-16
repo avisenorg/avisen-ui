@@ -1,16 +1,10 @@
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
-interface Block {
-  publisherKey: string;
-  hash: string;
-  previousHash: string;
-  timestamp: string;
-  height: number;
-}
-
 async function fetchLatestBlocks(): Promise<Block[]> {
-  const response = await fetch('http://localhost:8081/blockchain?page=0&size=10&sort=DESC', {
+  const baseUrl = import.meta.env.VITE_NODE_BASE_URL;
+  console.log(baseUrl);
+  const response = await fetch(`${baseUrl}/blockchain?page=0&size=10&sort=DESC`, {
     headers: {
       "Content-Type": "application/json",
       "X-Network-ID": "local",
@@ -38,6 +32,7 @@ const Home = () => {
               latestBlocks.map((block, index) => (
                 <li key={index}>
                   <Link to={`/block/${block.hash}`}>{block.hash}</Link>
+                  <p>{new Date(block.timestamp).toISOString()}</p>
                 </li>
               )) : <></>
           }
