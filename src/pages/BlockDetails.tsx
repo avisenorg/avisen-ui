@@ -3,11 +3,12 @@ import {Link, useParams} from "react-router-dom";
 
 async function fetchBlock({hash}: {hash: string}): Promise<BlockDetail> {
   const baseUrl = import.meta.env.VITE_NODE_BASE_URL;
+  const networkId = import.meta.env.VITE_NETWORK_ID;
 
   const response = await fetch(`${baseUrl}/blockchain/block/${hash}`, {
     headers: {
       "Content-Type": "application/json",
-      "X-Network-ID": "local",
+      "X-Network-ID": networkId,
     }
   });
   return await response.json();

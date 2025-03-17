@@ -3,11 +3,12 @@ import {Link} from "react-router-dom";
 
 async function fetchLatestBlocks(): Promise<Block[]> {
   const baseUrl = import.meta.env.VITE_NODE_BASE_URL;
-  console.log(baseUrl);
+  const networkId = import.meta.env.VITE_NETWORK_ID;
+
   const response = await fetch(`${baseUrl}/blockchain?page=0&size=10&sort=DESC`, {
     headers: {
       "Content-Type": "application/json",
-      "X-Network-ID": "local",
+      "X-Network-ID": networkId,
     }
   });
   return await response.json();
