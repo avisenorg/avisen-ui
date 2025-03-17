@@ -1,16 +1,19 @@
-import logo from './assets/avisen.svg'
 import './App.css'
+import {Route, Routes} from "react-router-dom";
+import BlockDetails from "./pages/BlockDetails.tsx";
+import Home from "./pages/Home.tsx";
+import NavBar from "./components/Navbar.tsx";
+import ArticleDetails from "./pages/ArticleDetails.tsx";
 
 function App() {
-
   return (
     <>
-      <div>
-        <a href="https://github.com/avisenorg" target="_blank">
-          <img src={logo} className="logo" alt="Avisen logo" />
-        </a>
-      </div>
-      <h1>Avisen</h1>
+      <NavBar/>
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/block/:hash" element={<BlockDetails />} />
+        <Route path="/article/:id" element={<ArticleDetails />} />
+      </Routes>
     </>
   )
 }
