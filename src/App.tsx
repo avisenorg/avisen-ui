@@ -4,6 +4,7 @@ import BlockDetails from "./pages/BlockDetails.tsx";
 import Home from "./pages/Home.tsx";
 import NavBar from "./components/Navbar.tsx";
 import ArticleDetails from "./pages/ArticleDetails.tsx";
+import Footer from './components/Footer.tsx';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/block/:hash" element={<BlockDetails />} />
         <Route path="/article/:id" element={<ArticleDetails />} />
       </Routes>
+      <Footer/>
     </>
   )
 }
